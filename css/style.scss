@@ -1,3 +1,102 @@
+/* ---------------------------- */
+
+$primary-color: #7fb223;
+
 body {
-    background-color: yellow;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* ---------------------------- */
+
+header {
+    background: $primary-color;
+    padding: 2rem;
+}
+
+.logo {
+    max-width: 4rem;
+}
+
+/* navbutton */
+
+.nav-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    line-height: 0;
+    padding: 25px;
+    z-index: 100;
+}
+
+.burger {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transform: scale(1.2);
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    width: 35px;
+    height: 2px;
+    background-color: #fff;
+    margin: 9px 0;
+    transition: 0.4s;
+}
+
+.burger:hover {
+    transform: scale(1.4);
+    transition: 1s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 9px);
+    transform: rotate(-45deg) translate(-8px, 9px) scale(1.2);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-7px, -18px);
+    transform: rotate(45deg) translate(-7px, -7px) scale(1.2);
+}
+
+:focus {
+    outline: 0;
+}
+
+.pulse {
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    80% {
+        transform: scale(1);
+    }
+
+    90% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
