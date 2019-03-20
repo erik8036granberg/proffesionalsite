@@ -1,4 +1,4 @@
-if (window.innerWidth < 991) {
+if (window.innerWidth < 768) {
 
 
 
@@ -20,6 +20,7 @@ if (window.innerWidth < 991) {
             document.querySelector(".burger").classList.toggle("change");
             document.querySelector("nav").classList.toggle("show");
             document.querySelector("header").classList.toggle("show");
+            document.querySelector(".burger").classList.toggle("pulse");
         }
 
         function closeMenu() {
@@ -27,6 +28,7 @@ if (window.innerWidth < 991) {
             document.querySelector(".burger").classList.remove("change");
             document.querySelector("nav").classList.remove("show");
             document.querySelector("header").classList.remove("show");
+            document.querySelector(".burger").classList.remove("pulse");
         }
 
         document.querySelector(".burger").addEventListener("click", toggleMenu);
