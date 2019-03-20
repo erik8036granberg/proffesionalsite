@@ -3,226 +3,355 @@
 $primary-color: #7fb223;
 
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
 }
 
 img {
-  width: 100%;
+    width: 100%;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* ---------------------------- */
 
 header {
-  background: $primary-color;
-  padding: 2rem;
-  position: relative;
+    background: $primary-color;
+    background-image: url("../static/header_bg_480.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 2rem;
+    position: relative;
+    height: 30rem;
+    overflow: hidden;
 }
 
 .logo {
-  max-width: 3.5rem;
-  position: relative;
-  top: -0.5rem;
-  left: -0.5rem;
-  transition: 0.5s ease-out;
+    max-width: 3.5rem;
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    transition: 0.5s ease-out;
 }
 
 .logo:hover {
-  transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 /*nav - mobile*/
 
 nav {
-  height: 0;
-  width: 100%;
-  overflow: hidden;
-  transition: 0.6s;
-  text-align: center;
-  opacity: 1;
-  transition: 1s ease;
+    max-height: 0;
+    width: 100%;
+    overflow: hidden;
+    transition: 0.6s;
+    text-align: center;
+    opacity: 1;
+    transition: 1s ease;
 }
 
 nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 nav li {
-  padding: 10px;
-  cursor: pointer;
+    padding: 1rem;
+    cursor: pointer;
+    border-bottom: solid 1px $primary-color;
 }
 
 nav a {
-  font-size: 2rem;
-  color: var(--body);
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.5s ease;
-  position: relative;
+    font-size: 1.5rem;
+    color: var(--body);
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.5s ease;
+    position: relative;
 }
 
 nav a:hover {
-  color: var(--bg_02);
-  transition: 0.5s ease;
+    color: var(--bg_02);
+    transition: 0.5s ease;
 }
 
 nav.show {
-  height: 15rem;
+    max-height: 20rem;
 }
 
 .burger {
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  transform: scale(1.2);
-  transition: 0.5s ease-out;
-  position: absolute;
-  top: 2rem;
-  right: 2.2rem;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transform: scale(1.2);
+    transition: 0.5s ease-out;
+    position: absolute;
+    top: 2rem;
+    right: 2.2rem;
 }
 
 .bar1,
 .bar2,
 .bar3 {
-  width: 35px;
-  height: 2px;
-  background-color: #fff;
-  margin: 9px 0;
-  transition: 0.4s;
+    width: 35px;
+    height: 2px;
+    background-color: #fff;
+    margin: 9px 0;
+    transition: 0.4s;
 }
 
 .burger:hover {
-  transform: scale(1.4);
-  transition: 1s;
+    transform: scale(1.5);
+    transition: 0.5s ease-out;
 }
 
 .change .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-9px, 9px);
-  transform: rotate(-45deg) translate(-8px, 9px) scale(1.2);
+    -webkit-transform: rotate(-45deg) translate(-9px, 9px);
+    transform: rotate(-45deg) translate(-8px, 9px) scale(1.2);
 }
 
 .change .bar2 {
-  opacity: 0;
+    opacity: 0;
 }
 
 .change .bar3 {
-  -webkit-transform: rotate(45deg) translate(-7px, -18px);
-  transform: rotate(45deg) translate(-7px, -7px) scale(1.2);
+    -webkit-transform: rotate(45deg) translate(-7px, -18px);
+    transform: rotate(45deg) translate(-7px, -7px) scale(1.2);
 }
 
 :focus {
-  outline: 0;
+    outline: 0;
 }
 
 .pulse {
-  animation: pulse 3s infinite;
+    animation: pulse 3s infinite;
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
+    0% {
+        transform: scale(1);
+    }
 
-  80% {
-    transform: scale(1);
-  }
+    80% {
+        transform: scale(1);
+    }
 
-  90% {
-    transform: scale(1.5);
-  }
+    90% {
+        transform: scale(1.5);
+    }
 
-  100% {
-    transform: scale(1);
-  }
+    100% {
+        transform: scale(1);
+    }
 }
 
-/* 30em (480px) */
-
-@media only screen and (min-width: 30em) and (max-width: 47.99999em) {
+.text-header {
+    margin: 5rem 0 0 0;
+    color: #fff;
+    max-width: 30rem;
 }
 
-/* 48em (768px) */
-@media only screen and (min-width: 48em) {
-  .burger {
-    display: none;
-  }
+.text-header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 1rem;
+    font-size: 1.3rem;
+    max-width: 70%;
+}
 
-  nav {
+.text-header ul li {
+    padding: 0;
+    margin: 0;
+}
+
+.text-header ul li:before {
+    content: " » ";
+}
+
+.text-header h1 {
+    font-size: 2.5rem;
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.profile {
     position: absolute;
-    top: 0;
-    right: 0;
-    height: auto;
-    text-align: right;
-    transition: 0s;
-    padding: 2rem 2rem 0 0;
-    opacity: 1;
-    z-index: 500;
-  }
-
-  nav a {
-    font-size: 1.7rem;
-    font-weight: normal;
-  }
-
-  nav li {
-    display: inline;
-    padding-left: 50px;
-    padding-top: 0;
-    padding-right: 0;
-    padding-bottom: 0;
-  }
+    bottom: 0;
+    right: -5rem;
+    max-width: 18rem;
 }
 
-/* 64em (1024px) */
-@media only screen and (min-width: 64em) {
+.some {
+    font-size: 2rem;
+    margin: 1.5rem 0 0 1rem;
+}
+
+.some i {
+    cursor: pointer;
+    transition: 0.5s;
+    margin: 0 0.25rem 0 0;
+}
+
+.some i:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+/* 30rem (480px) */
+
+@media only screen and (min-width: 30rem) and (max-width: 47.99999rem) {
+    header {
+        background-image: url("../static/header_bg_768.jpg");
+        height: 25rem;
+    }
+
+    .profile {
+        right: -3rem;
+        max-width: 18rem;
+    }
+}
+
+/* 48rem (768px) */
+@media only screen and (min-width: 48rem) {
+
+    header {
+        background-image: url("../static/header_bg_1080.jpg");
+        height: 25rem;
+    }
+
+    .burger {
+        display: none;
+    }
+
+    nav {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: auto;
+        color: #fff;
+        min-height: 5rem;
+        text-align: right;
+        transition: 0s;
+        padding: 2rem 2rem 0 0;
+        opacity: 1;
+        z-index: 500;
+    }
+
+    nav li {
+        display: inline;
+        padding-left: 2rem;
+        padding-top: 0;
+        padding-right: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    nav a {
+        font-size: 1.4rem;
+        font-weight: normal;
+    }
+
+    .text-header {
+        max-width: 100%;
+    }
+
+    .profile {
+        right: 2rem;
+        max-width: 20rem;
+    }
+}
+
+/* 64rem (1024px) */
+@media only screen and (min-width: 64rem) {
+    header {
+        background-image: url("../static/header_bg_1920.jpg");
+        height: 25rem;
+    }
+
+    .wrapper {
+        max-width: 64rem;
+        margin: 0 auto;
+    }
+
+    .profile {
+        right: 8rem;
+        max-width: 22rem;
+    }
+}
+
+
+/* 80rem (1280px) */
+@media only screen and (min-width: 80rem) {
+    .profile {
+        right: 15rem;
+        max-width: 22rem;
+    }
+}
+
+/* 100rem (1600px) */
+@media only screen and (min-width: 100rem) {
+    .profile {
+        right: 23rem;
+        max-width: 25rem;
+    }
 }
 
 /* Print */
 @media print {
-  * {
-    background: transparent !important;
-    color: #000 !important;
-    text-shadow: none;
-  }
-  a,
-  a:visited {
-    color: #0000ff !important;
-    text-decoration: underline;
-  }
-  a:after {
-    content: " (" attr(href) ")";
-  }
-  abbr:after {
-    content: " (" attr(title) ")";
-  }
-  .ir a:after {
-    content: "";
-  } /* Don't show links for images */
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-  img {
-    page-break-inside: avoid;
-  }
-  @page {
-    margin: 0.5cm;
-  }
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        text-shadow: none;
+    }
+
+    a,
+    a:visited {
+        color: #0000ff !important;
+        text-decoration: underline;
+    }
+
+    a:after {
+        content: " ("attr(href) ")";
+    }
+
+    abbr:after {
+        content: " ("attr(title) ")";
+    }
+
+    .ir a:after {
+        content: "";
+    }
+
+    /* Don't show links for images */
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    img {
+        page-break-inside: avoid;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
 }
