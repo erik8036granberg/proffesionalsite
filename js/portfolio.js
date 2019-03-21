@@ -1,13 +1,13 @@
 "use strict";
 
-let items = [];
+let itmes = [];
 
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
     console.log("init");
     setTimeout(loader, 3000);
-    getcases()
+    getItems();
 }
 
 function loader() {
@@ -16,8 +16,8 @@ function loader() {
 
 // - - - - - - - - - - - - - restdb stuff - - - - - - - - - - - - -
 
-function getcases() {
-    console.log("getcases");
+function getItems() {
+    console.log("getitems");
     fetch("https://profweb-4fea.restdb.io/rest/cases?metafields=true&idtolink=true", {
             method: "get",
             headers: {
@@ -30,8 +30,8 @@ function getcases() {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            items = data;
-            sortItems(items);
+            itmes = data;
+            sortItems(itmes);
         });
 }
 
@@ -47,19 +47,24 @@ function sortItems(activeitems) {
         }
     });
     document.querySelector("[data-container]").innerHTML = "";
-    activeitems.forEach(displayCases);
+    activeitems.forEach(displayItems);
 }
 
-// - - - - - - - - - - - - - display items - - - - - - - - - - - - -
+// - - - - - - - - - - - - - display cases - - - - - - - - - - - - -
 
-function displayCases(cases) {
-    console.log("displayCases");
+function displayItems(item) {
+    console.log("displayItems");
+    console.log(item._id);
     const template = document.querySelector("[data-template]").content;
     const clone = template.cloneNode(true);
-    clone.querySelector("[data-id]").dataset.id = cases._id;
-    clone.querySelector("[data-preview]").setAttribute("src", cases.preview_0);
-    clone.querySelector("[data-preview]").setAttribute("alt", cases.customer + " - " + cases.case);
-    clone.querySelector("[data-customer]").textContent = cases.customer;
-    clone.querySelector("[data-case]").textContent = cases.case;
+    clone.querySelector("[data-id]").dataset.id = item._id;
+    clone.querySelector("[data-preview]").setAttribute("src", item.preview_0);
+    clone.querySelector("[data-preview]").setAttribute("alt", item.customer + " - " + item.case);
+    clone.querySelector("[data-customer]").textContent = item.customer;
+    clone.querySelector("[data-case]").textContent = item.case;
+    clone.querySelector("[data-id]").addEventListener("click", () => {
+        window.location.href = "portfolio_single.html?p=" + item._id;
+    });
+
     document.querySelector("[data-container]").appendChild(clone);
 }

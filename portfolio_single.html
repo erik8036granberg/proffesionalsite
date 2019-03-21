@@ -1,4 +1,4 @@
-<html lang="da">
+<html lang="da" data-container>
 
 <head>
     <meta charset="UTF-8" />
@@ -40,25 +40,28 @@
             <div id="loader_bg">
                 <div id="loader"></div>
             </div>
-            <div class="wrapper cases" data-container>
+            <div class="wrapper single_cases">
+                <article>
+                    <div class="display_wrapper">
+                        <div class="flexslider">
+                            <ul class="slides">
+                                <li>
+                                    <img src="" alt="" data-image>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="details_wrapper">
+                        <p class="customer" data-customer></p>
+                        <p class="description" data-description></p>
+                    </div>
+                </article>
             </div>
         </section>
     </main>
-
-    <template data-template>
-        <article class="case" data-id>
-            <div class="img-box">
-                <img class="preview" src="" alt="" data-preview>
-            </div>
-            <p class="customer" data-customer></p>
-            <p class="case" data-case></p>
-        </article>
-    </template>
-
     <footer></footer>
-    <script src="js/portfolio.js"></script>
+    <script src="js/portfolio_single.js"></script>
     <script src="js/burgermenu.js"></script>
-    <a href="portfolio_single.html">test</a>
 </body>
 
 </html>
