@@ -274,6 +274,17 @@ header.subpage {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 2rem;
+    color: #fff;
+}
+
+.portfolio .cases .customer {
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.portfolio .cases .case {
+    font-style: italic;
+    margin: 0;
 }
 
 // --------------------- media querty 30 rem --------------------- 
@@ -299,6 +310,10 @@ header.subpage {
     .profile {
         right: -3rem;
         max-width: 18rem;
+    }
+
+    .portfolio .cases {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -372,6 +387,10 @@ header.subpage {
         right: 2rem;
         max-width: 20rem;
     }
+
+    .portfolio .cases {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 // --------------------- media querty 64 rem --------------------- 
@@ -400,6 +419,10 @@ header.subpage {
     .profile {
         right: 8rem;
         max-width: 22rem;
+    }
+
+    .portfolio .cases {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
