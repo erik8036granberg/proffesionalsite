@@ -6,7 +6,12 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
     console.log("init");
+    setTimeout(loader, 3000);
     getcases()
+}
+
+function loader() {
+    document.querySelector("#loader_bg").style.display = "none";
 }
 
 // - - - - - - - - - - - - - restdb stuff - - - - - - - - - - - - -
