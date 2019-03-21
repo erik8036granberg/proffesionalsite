@@ -5,7 +5,7 @@ $primary-color: #7fb223;
 body {
     margin: 0;
     padding: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 img {
@@ -16,18 +16,27 @@ img {
     box-sizing: border-box;
 }
 
+div,
+img {
+    transition: 1s;
+}
+
+
 /* ---------------------------- */
 
 header {
     background: $primary-color;
-    background-image: url("../static/header_bg_480.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     padding: 2rem;
     position: relative;
-    height: 30rem;
     overflow: hidden;
+}
+
+header.start {
+    background-image: url("../static/header_bg_480.jpg");
+    height: 30rem;
 }
 
 .logo {
@@ -68,16 +77,22 @@ nav li {
 
 nav a {
     font-size: 1.5rem;
-    color: var(--body);
     text-decoration: none;
     font-weight: bold;
     transition: 0.5s ease;
     position: relative;
+    transition: 0.5s ease;
+    display: block;
+}
+
+nav a:link,
+nav a:active,
+nav a:visited {
+    color: #000;
 }
 
 nav a:hover {
-    color: var(--bg_02);
-    transition: 0.5s ease;
+    color: $primary-color;
 }
 
 nav.show {
@@ -153,13 +168,12 @@ nav.show {
 .text-header {
     margin: 5rem 0 0 0;
     color: #fff;
-    max-width: 30rem;
 }
 
 .text-header ul {
     list-style: none;
-    margin: 0;
-    padding: 0 0 0 1rem;
+    margin: 1rem 0 0;
+    padding: 0;
     font-size: 1.3rem;
     max-width: 70%;
 }
@@ -170,7 +184,7 @@ nav.show {
 }
 
 .text-header ul li:before {
-    content: " » ";
+    content: "// ";
 }
 
 .text-header h1 {
@@ -178,6 +192,13 @@ nav.show {
     font-family: 'Rajdhani', sans-serif;
     text-transform: uppercase;
     margin: 0;
+    line-height: 2.75rem;
+}
+
+.text-header a:link,
+.text-header a:active,
+.text-header a:visited {
+    color: #fff;
 }
 
 .profile {
@@ -189,7 +210,7 @@ nav.show {
 
 .some {
     font-size: 2rem;
-    margin: 1.5rem 0 0 1rem;
+    margin: 1.5rem 0 0 0;
 }
 
 .some i {
@@ -203,12 +224,49 @@ nav.show {
     transform: scale(1.2);
 }
 
+// --------------------- portfolio ---------------------
+
+header.portfolio {
+    background-image: url("../static/header_bg_480.jpg");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 11rem;
+}
+
+.portfolio-header {
+    color: #fff;
+    max-width: 50%;
+    margin: 3rem 0 0 0;
+}
+
+.portfolio-header h1 {
+    font-size: 2.5rem;
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 2.75rem;
+}
+
+
+// --------------------- media querty 30 rem --------------------- 
+
 /* 30rem (480px) */
 
 @media only screen and (min-width: 30rem) and (max-width: 47.99999rem) {
-    header {
+
+    header.start {
         background-image: url("../static/header_bg_768.jpg");
         height: 25rem;
+    }
+
+    header.portfolio {
+        background-image: url("../static/header_bg_768.jpg");
+        height: 8rem;
+    }
+
+    .portfolio-header {
+        margin: 0;
     }
 
     .profile {
@@ -217,12 +275,23 @@ nav.show {
     }
 }
 
+// --------------------- media querty 48 rem --------------------- 
+
 /* 48rem (768px) */
 @media only screen and (min-width: 48rem) {
 
-    header {
-        background-image: url("../static/header_bg_1080.jpg");
+    header.start {
         height: 25rem;
+        background-image: url("../static/header_bg_1080.jpg");
+    }
+
+    header.portfolio {
+        background-image: url("../static/header_bg_1080.jpg");
+        height: 12rem;
+    }
+
+    .portfolio-header {
+        margin: 2rem 0 0 0;
     }
 
     .burger {
@@ -253,8 +322,19 @@ nav.show {
     }
 
     nav a {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         font-weight: normal;
+        display: inline-block;
+    }
+
+    nav a:link,
+    nav a:active,
+    nav a:visited {
+        color: #fff;
+    }
+
+    nav a:hover {
+        transform: scale(1.2);
     }
 
     .text-header {
@@ -267,11 +347,22 @@ nav.show {
     }
 }
 
+// --------------------- media querty 64 rem --------------------- 
+
 /* 64rem (1024px) */
 @media only screen and (min-width: 64rem) {
-    header {
+    header.start {
         background-image: url("../static/header_bg_1920.jpg");
         height: 25rem;
+    }
+
+    header.portfolio {
+        background-image: url("../static/header_bg_1920.jpg");
+        height: 8rem;
+    }
+
+    .portfolio-header {
+        margin: 0;
     }
 
     .wrapper {
@@ -285,22 +376,27 @@ nav.show {
     }
 }
 
+// --------------------- media querty 80 rem --------------------- 
 
 /* 80rem (1280px) */
 @media only screen and (min-width: 80rem) {
     .profile {
         right: 15rem;
-        max-width: 22rem;
+        max-width: 25rem;
     }
 }
+
+// --------------------- media querty 100 rem --------------------- 
 
 /* 100rem (1600px) */
 @media only screen and (min-width: 100rem) {
     .profile {
         right: 23rem;
-        max-width: 25rem;
+        max-width: 27rem;
     }
 }
+
+// --------------------- media querty print --------------------- 
 
 /* Print */
 @media print {
