@@ -226,7 +226,7 @@ nav.show {
 
 // --------------------- portfolio ---------------------
 
-header.portfolio {
+header.subpage {
     background-image: url("../static/header_bg_480.jpg");
     display: flex;
     align-items: center;
@@ -234,13 +234,13 @@ header.portfolio {
     height: 11rem;
 }
 
-.portfolio-header {
+.subpage-header {
     color: #fff;
     max-width: 50%;
     margin: 3rem 0 0 0;
 }
 
-.portfolio-header h1 {
+.subpage-header h1 {
     font-size: 2.5rem;
     font-family: 'Rajdhani', sans-serif;
     text-transform: uppercase;
@@ -260,12 +260,12 @@ header.portfolio {
         height: 25rem;
     }
 
-    header.portfolio {
+    header.subpage {
         background-image: url("../static/header_bg_768.jpg");
         height: 8rem;
     }
 
-    .portfolio-header {
+    .subpage-header {
         margin: 0;
     }
 
@@ -285,12 +285,12 @@ header.portfolio {
         background-image: url("../static/header_bg_1080.jpg");
     }
 
-    header.portfolio {
+    header.subpage {
         background-image: url("../static/header_bg_1080.jpg");
         height: 12rem;
     }
 
-    .portfolio-header {
+    .subpage-header {
         margin: 2rem 0 0 0;
     }
 
@@ -356,12 +356,12 @@ header.portfolio {
         height: 25rem;
     }
 
-    header.portfolio {
+    header.subpage {
         background-image: url("../static/header_bg_1920.jpg");
         height: 8rem;
     }
 
-    .portfolio-header {
+    .subpage-header {
         margin: 0;
     }
 
