@@ -64,74 +64,92 @@ function displayItem(filteredItem) {
     console.log("displayItem");
     let dest = document.querySelector("[data-container]");
     let path;
+    let number;
 
     const displayImages = Object.keys(filteredItem).filter(function (displayImage) {
         return displayImage.indexOf("display_") === 0;
     });
     console.log("antal billeder er:" + displayImages.length);
 
-    // TODO: DRY this shit
+    dest.querySelector("[data-display]").setAttribute("src", filteredItem.display_0);
+    dest
+        .querySelector("[data-display]")
+        .setAttribute("alt", filteredItem.customer + " - " + filteredItem.case);
 
-    if (filteredItem.display_0 !== undefined) {
-        path = filteredItem.display_0;
-        createImage();
-    }
+
+    // TODO: DRY this?
 
     if (filteredItem.display_1 !== undefined) {
         path = filteredItem.display_1;
+        number = 1;
         createImage();
     }
 
     if (filteredItem.display_2 !== undefined) {
         path = filteredItem.display_1;
+        number = 2;
         createImage();
     }
 
     if (filteredItem.display_3 !== undefined) {
         path = filteredItem.display_3;
+        number = 3;
         createImage();
     }
 
     if (filteredItem.display_4 !== undefined) {
         path = filteredItem.display_4;
+        number = 4;
         createImage();
     }
 
     if (filteredItem.display_5 !== undefined) {
         path = filteredItem.display_5;
+        number = 5;
         createImage();
     }
 
     if (filteredItem.display_6 !== undefined) {
         path = filteredItem.display_6;
+        number = 6;
         createImage();
     }
 
     if (filteredItem.display_7 !== undefined) {
         path = filteredItem.display_7;
+        number = 7;
         createImage();
     }
 
     if (filteredItem.display_8 !== undefined) {
         path = filteredItem.display_8;
+        number = 8;
         createImage();
     }
 
     if (filteredItem.display_9 !== undefined) {
         path = filteredItem.display_9;
+        number = 9;
         createImage();
     }
 
     if (filteredItem.display_10 !== undefined) {
         path = filteredItem.display_10;
+        number = 10;
         createImage();
     }
 
     function createImage() {
-        const htmlString = "<img src=" + path + ">";
-        const image = document.createElement("LI");
+        const htmlString = "<img class='d-block w-100' src=" + path + ">";
+        const image = document.createElement("DIV");
+        image.classList.add("carousel-item");
         image.innerHTML = htmlString.trim();
-        document.querySelector(".slides").appendChild(image);
+        document.querySelector(".carousel-inner").appendChild(image);
+
+        const indicator = document.createElement("LI");
+        indicator.setAttribute("data-target", "#carouselExampleIndicators");
+        indicator.setAttribute("data-slide-to", number);
+        document.querySelector(".carousel-indicators").appendChild(indicator);
     }
 
     dest.querySelector("[data-customer]").textContent = filteredItem.customer;
