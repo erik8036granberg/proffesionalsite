@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
     console.log("init portfolio_sigle");
-    setTimeout(loader, 2000);
+    setTimeout(loader, 1500);
     getItems();
 }
 
@@ -35,7 +35,7 @@ function getItems() {
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                     "x-apikey": "5c9396f3cac6621685acc146",
-                    "cache-control": "no-cache"
+                    "cache-control": "public"
                 }
             }
         )
@@ -63,6 +63,7 @@ function displayItem(filteredItem) {
 
     console.log("displayItem");
     let dest = document.querySelector("[data-container]");
+    let path;
 
     const displayImages = Object.keys(filteredItem).filter(function (displayImage) {
         return displayImage.indexOf("display_") === 0;
@@ -72,61 +73,61 @@ function displayItem(filteredItem) {
     // TODO: DRY this shit
 
     if (filteredItem.display_0 !== undefined) {
-        let path = filteredItem.display_0;
-        createImage(path);
+        path = filteredItem.display_0;
+        createImage();
     }
 
     if (filteredItem.display_1 !== undefined) {
-        let path = filteredItem.display_1;
-        createImage(path);
+        path = filteredItem.display_1;
+        createImage();
     }
 
     if (filteredItem.display_2 !== undefined) {
-        let path = filteredItem.display_1;
-        createImage(path);
+        path = filteredItem.display_1;
+        createImage();
     }
 
     if (filteredItem.display_3 !== undefined) {
-        let path = filteredItem.display_3;
-        createImage(path);
+        path = filteredItem.display_3;
+        createImage();
     }
 
     if (filteredItem.display_4 !== undefined) {
-        let path = filteredItem.display_4;
-        createImage(path);
+        path = filteredItem.display_4;
+        createImage();
     }
 
     if (filteredItem.display_5 !== undefined) {
-        let path = filteredItem.display_5;
-        createImage(path);
+        path = filteredItem.display_5;
+        createImage();
     }
 
     if (filteredItem.display_6 !== undefined) {
-        let path = filteredItem.display_6;
-        createImage(path);
+        path = filteredItem.display_6;
+        createImage();
     }
 
     if (filteredItem.display_7 !== undefined) {
-        let path = filteredItem.display_7;
-        createImage(path);
+        path = filteredItem.display_7;
+        createImage();
     }
 
     if (filteredItem.display_8 !== undefined) {
-        let path = filteredItem.display_8;
-        createImage(path);
+        path = filteredItem.display_8;
+        createImage();
     }
 
     if (filteredItem.display_9 !== undefined) {
-        let path = filteredItem.display_9;
-        createImage(path);
+        path = filteredItem.display_9;
+        createImage();
     }
 
     if (filteredItem.display_10 !== undefined) {
-        let path = filteredItem.display_10;
-        createImage(path);
+        path = filteredItem.display_10;
+        createImage();
     }
 
-    function createImage(path) {
+    function createImage() {
         const htmlString = "<img src=" + path + ">";
         const image = document.createElement("LI");
         image.innerHTML = htmlString.trim();

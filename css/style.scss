@@ -67,8 +67,6 @@ header.start {
     transform: scale(1.2);
 }
 
-/*nav - mobile*/
-
 nav {
     max-height: 0;
     width: 100%;
@@ -77,6 +75,7 @@ nav {
     text-align: center;
     opacity: 1;
     transition: 1s ease;
+    background-color: #fff;
 }
 
 nav ul {
@@ -242,13 +241,17 @@ nav.show {
 
 // --------------------- portfolio ---------------------
 
+.portfolio_bg {
+    background: #1d1d1d;
+}
+
 // for optinal difirerant imaegs on subpages
 header.subpage {
     background-image: url("../static/header_bg_480.jpg");
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 11rem;
+    height: 7rem;
 }
 
 .subpage-header {
@@ -265,9 +268,9 @@ header.subpage {
 }
 
 .portfolio {
-    background: #1d1d1d;
-    min-height: 100%;
+    min-height: 100vw;
     padding: 2rem;
+
 }
 
 .portfolio .cases {
@@ -297,14 +300,11 @@ header.subpage {
     cursor: pointer;
 }
 
-// --------------------- portfolio single ---------------------
-
-
-
-.display_wrapper,
-.details_wrapper {
-    padding: 2rem;
+.hidden {
+    display: none;
 }
+
+// --------------------- portfolio single ---------------------
 
 .portfolio .single_cases {
     display: grid;
@@ -312,6 +312,28 @@ header.subpage {
     grid-gap: 2rem;
     color: #fff;
 }
+
+.display_wrapper {
+    background-color: rgb(228, 182, 83);
+    padding: 2rem;
+}
+
+.details_wrapper {
+    padding: 2rem 0 0 0;
+}
+
+.details_wrapper ul {
+    margin: 0;
+}
+
+
+
+.details_wrapper .customer {
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
 
 /* loader */
 
@@ -361,7 +383,7 @@ header.subpage {
 
     header.subpage {
         background-image: url("../static/header_bg_768.jpg");
-        height: 8rem;
+        height: 7rem;
     }
 
     .subpage-header {
@@ -396,7 +418,7 @@ header.subpage {
     }
 
     .subpage-header {
-        margin: 0;
+        margin: 2rem 0 0 0;
     }
 
     .burger {
@@ -409,6 +431,7 @@ header.subpage {
         right: 0;
         width: auto;
         color: #fff;
+        background-color: transparent;
         min-height: 5rem;
         text-align: right;
         transition: 0s;
@@ -468,6 +491,10 @@ header.subpage {
     .portfolio .cases {
         grid-template-columns: 1fr 1fr 1fr;
     }
+
+    .portfolio .single_cases {
+        grid-template-columns: 2fr 1fr;
+    }
 }
 
 // --------------------- media querty 64 rem --------------------- 
@@ -481,7 +508,7 @@ header.subpage {
 
     header.subpage {
         background-image: url("../static/header_bg_1920.jpg");
-        height: 8rem;
+        height: 9rem;
     }
 
     .subpage-header {
@@ -500,6 +527,10 @@ header.subpage {
 
     .portfolio .cases {
         grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .portfolio .single_cases {
+        grid-template-columns: 2fr 1fr;
     }
 }
 

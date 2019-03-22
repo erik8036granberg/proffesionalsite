@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
     console.log("init");
-    setTimeout(loader, 3000);
+    setTimeout(loader, 1500);
     getItems();
 }
 
@@ -23,7 +23,7 @@ function getItems() {
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
                 "x-apikey": "5c9396f3cac6621685acc146",
-                "cache-control": "no-cache"
+                "cache-control": "public"
             }
         })
         //   format as jason & send to sort
