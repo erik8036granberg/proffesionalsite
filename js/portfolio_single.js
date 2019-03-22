@@ -5,7 +5,11 @@ let urlParams = new URLSearchParams(window.location.search);
 
 //	hent produkt-id
 let id = urlParams.get("p");
-console.log("id er: " + id)
+console.log("id er: " + id);
+
+if (id === null) {
+    window.location.href = "portfolio.html";
+}
 
 let items = [];
 
@@ -13,10 +17,9 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
     console.log("init portfolio_sigle");
-    setTimeout(loader, 3000);
+    setTimeout(loader, 2000);
     getItems();
 }
-
 
 function loader() {
     document.querySelector("#loader_bg").style.display = "none";
@@ -36,56 +39,100 @@ function getItems() {
                 }
             }
         )
-        //   format as jason & send to sort
         .then(res => res.json())
         .then(data => {
             console.log(data);
             items = data;
-            findItem(items);
+            displayFilter(items);
         });
 }
 
-
-function findItem(items) {
-    console.log("findItem");
+function displayFilter(items) {
+    console.log("displayFilter");
     let filteredItems = items.filter(function (activeItem) {
         return activeItem._id === id;
     });
     console.log("filteredItems er");
     console.log(filteredItems);
-
-    let displayImages =
-
-        filteredItems.forEach(displayItem);
+    filteredItems.forEach(displayItem);
 }
-
 
 // - - - - - - - - - - - - - display items - - - - - - - - - - - - -
 
-function displayItem(filteredItems) {
+function displayItem(filteredItem) {
 
     console.log("displayItem");
     let dest = document.querySelector("[data-container]");
 
+    const displayImages = Object.keys(filteredItem).filter(function (displayImage) {
+        return displayImage.indexOf("display_") === 0;
+    });
+    console.log("antal billeder er:" + displayImages.length);
 
+    // TODO: DRY this shit
 
-
-    dest.querySelector("[data-display]").setAttribute("src", filteredItems.display_0);
-    dest
-        .querySelector("[data-display]")
-        .setAttribute("alt", filteredItems.customer + " - " + filteredItems.case);
-
-
-    if (filteredItems.display_1 !== undefined) {
-        const htmlString = "<img src=" + filteredItems.display_1 + ">";
-        const display1 = document.createElement("LI");
-        display1.innerHTML = htmlString.trim();
-        document.querySelector(".slides").appendChild(display1);
+    if (filteredItem.display_0 !== undefined) {
+        let path = filteredItem.display_0;
+        createImage(path);
     }
 
-    dest.querySelector("[data-customer]").textContent = filteredItems.customer;
-    dest.querySelector("[data-description]").innerHTML = filteredItems.description;
+    if (filteredItem.display_1 !== undefined) {
+        let path = filteredItem.display_1;
+        createImage(path);
+    }
 
+    if (filteredItem.display_2 !== undefined) {
+        let path = filteredItem.display_1;
+        createImage(path);
+    }
 
+    if (filteredItem.display_3 !== undefined) {
+        let path = filteredItem.display_3;
+        createImage(path);
+    }
 
+    if (filteredItem.display_4 !== undefined) {
+        let path = filteredItem.display_4;
+        createImage(path);
+    }
+
+    if (filteredItem.display_5 !== undefined) {
+        let path = filteredItem.display_5;
+        createImage(path);
+    }
+
+    if (filteredItem.display_6 !== undefined) {
+        let path = filteredItem.display_6;
+        createImage(path);
+    }
+
+    if (filteredItem.display_7 !== undefined) {
+        let path = filteredItem.display_7;
+        createImage(path);
+    }
+
+    if (filteredItem.display_8 !== undefined) {
+        let path = filteredItem.display_8;
+        createImage(path);
+    }
+
+    if (filteredItem.display_9 !== undefined) {
+        let path = filteredItem.display_9;
+        createImage(path);
+    }
+
+    if (filteredItem.display_10 !== undefined) {
+        let path = filteredItem.display_10;
+        createImage(path);
+    }
+
+    function createImage(path) {
+        const htmlString = "<img src=" + path + ">";
+        const image = document.createElement("LI");
+        image.innerHTML = htmlString.trim();
+        document.querySelector(".slides").appendChild(image);
+    }
+
+    dest.querySelector("[data-customer]").textContent = filteredItem.customer;
+    dest.querySelector("[data-description]").innerHTML = filteredItem.description;
 }
