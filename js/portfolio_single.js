@@ -54,20 +54,38 @@ function findItem(items) {
     console.log("filteredItems er");
     console.log(filteredItems);
 
-    filteredItems.forEach(displayItems);
+    let displayImages =
+
+        filteredItems.forEach(displayItem);
 }
 
 
 // - - - - - - - - - - - - - display items - - - - - - - - - - - - -
 
-function displayItems(filteredItems) {
+function displayItem(filteredItems) {
 
-    console.log("displayItems");
+    console.log("displayItem");
     let dest = document.querySelector("[data-container]");
-    // dest.querySelector("[data-display]").setAttribute("src", filteredCase.preview_0);
-    // dest
-    //     .querySelector("[data-display]")
-    //     .setAttribute("alt", filteredCase.customer + " - " + filteredCase.case);
+
+
+
+
+    dest.querySelector("[data-display]").setAttribute("src", filteredItems.display_0);
+    dest
+        .querySelector("[data-display]")
+        .setAttribute("alt", filteredItems.customer + " - " + filteredItems.case);
+
+
+    if (filteredItems.display_1 !== undefined) {
+        const htmlString = "<img src=" + filteredItems.display_1 + ">";
+        const display1 = document.createElement("LI");
+        display1.innerHTML = htmlString.trim();
+        document.querySelector(".slides").appendChild(display1);
+    }
+
     dest.querySelector("[data-customer]").textContent = filteredItems.customer;
     dest.querySelector("[data-description]").innerHTML = filteredItems.description;
+
+
+
 }
