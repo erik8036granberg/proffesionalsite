@@ -39,11 +39,20 @@ function getItems() {
 
 function sortItems(activeitems) {
     console.log("sortItems");
+    // by creation
     activeitems.sort(function (a, z) {
         if (a._created < z._created) {
-            return 1;
-        } else {
             return -1;
+        } else {
+            return 1;
+        }
+    });
+    // place featured in front
+    activeitems.sort(function (a, z) {
+        if (a.featured < z.featured) {
+            return -1;
+        } else {
+            return 1;
         }
     });
     document.querySelector("[data-container]").innerHTML = "";

@@ -86,7 +86,7 @@ function displayItem(filteredItem) {
     }
 
     if (filteredItem.display_2 !== undefined) {
-        path = filteredItem.display_1;
+        path = filteredItem.display_2;
         number = 2;
         createImage();
     }
