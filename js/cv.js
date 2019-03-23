@@ -41,4 +41,5 @@ function displayPage(data) {
 
     dest.querySelector("[data-resume]").innerHTML = data.resume;
     dest.querySelector("[data-personinfo]").innerHTML = data.personinfo;
+    dest.querySelector("[data-experience]").innerHTML = data.experience;
 }

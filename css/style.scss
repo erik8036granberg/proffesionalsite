@@ -296,12 +296,12 @@ header.subpage {
     }
 
     100% {
-        background: #252525;
+        background: #131313;
     }
 }
 
 .faded {
-    background: #252525 !important;
+    background: #131313 !important;
 }
 
 .subpage-header h1 {
@@ -443,10 +443,9 @@ header.subpage {
 .cv .items {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 2rem;
 }
 
-.item {
+.cv .item {
     padding: 2rem 2rem 0 2rem;
 }
 
@@ -456,6 +455,12 @@ header.subpage {
     margin: 0;
     line-height: 2.75rem;
     color: $primary-color;
+}
+
+.cv .item h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .cv .item p {
@@ -480,9 +485,18 @@ header.subpage {
     font-size: 0.8rem;
 }
 
-.cv .experinece_list {
+.cv .experience_list {
     display: grid;
-    grid-template-columns: 25% 1fr;
+    grid-template-columns: 3rem 1fr;
+}
+
+.cv .experience_list p {
+    margin: 0;
+}
+
+.cv .experience_list p:last-child {
+    color: rgb(140, 140, 140);
+    padding-bottom: 1rem;
 }
 
 // --------------------- media querty 30 rem ---------------------
@@ -601,6 +615,16 @@ header.subpage {
     .carousel-indicators li {
         height: 10px !important;
     }
+
+    .cv .items {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cv div:nth-child(2) .item {
+        padding-left: 0;
+    }
+
+
 }
 
 // --------------------- media querty 55 rem ---------------------
