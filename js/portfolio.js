@@ -1,14 +1,13 @@
 "use strict";
 
 let urlParams = new URLSearchParams(window.location.search);
-let id = urlParams.get("r");
-console.log("id er: " + id);
 let showItems = urlParams.get("l");
 console.log("showItems er: " + showItems);
-if (showItems === null) {
-    showItems = "work";
-    console.log("showItems blevet er: " + showItems);
-}
+
+// TODO: get id for slide to cliked item if returning
+// let id = urlParams.get("r");
+// console.log("id er: " + id);
+
 
 let click;
 let items = [];
@@ -22,6 +21,20 @@ function init() {
     getItems();
     getkeaItems();
     document.querySelector("body").addEventListener("click", mouseClick);
+
+    if (showItems === null) {
+        showItems = "work";
+        console.log("showItems blevet er: " + showItems);
+    }
+
+    if (showItems === "work") {
+        setWorkActive();
+    }
+
+    if (showItems === "kea") {
+        setKeaActive();
+    }
+
 }
 
 function loader() {
@@ -82,23 +95,31 @@ function mouseClick(event) {
         console.log("showItems clicked");
         event.preventDefault();
         showItems = "work";
-        document.querySelector("#showitems").classList.add("active");
-        document.querySelector("#showitems").classList.remove("inactive");
-        document.querySelector("#showkeaitems").classList.add("inactive");
-        document.querySelector("#showkeaitems").classList.remove("active");
+        setWorkActive();
         sortItems(items);
     }
     if (click === "showKeaItems") {
         console.log("showKeaItems clicked");
         event.preventDefault();
         showItems = "kea";
-        document.querySelector("#showkeaitems").classList.add("active");
-        document.querySelector("#showkeaitems").classList.remove("inactive");
-        document.querySelector("#showitems").classList.add("inactive");
-        document.querySelector("#showitems").classList.remove("active");
+        setKeaActive();
         console.log(keaItems);
         sortItems(keaItems);
     }
+}
+
+function setWorkActive() {
+    document.querySelector("#showitems").classList.add("active");
+    document.querySelector("#showitems").classList.remove("inactive");
+    document.querySelector("#showkeaitems").classList.add("inactive");
+    document.querySelector("#showkeaitems").classList.remove("active");
+}
+
+function setKeaActive() {
+    document.querySelector("#showkeaitems").classList.add("active");
+    document.querySelector("#showkeaitems").classList.remove("inactive");
+    document.querySelector("#showitems").classList.add("inactive");
+    document.querySelector("#showitems").classList.remove("active");
 }
 
 // - - - - - - - - - - - - - sort - - - - - - - - - - - - -
@@ -113,12 +134,14 @@ function sortItems(activeitems) {
     });
     document.querySelector("[data-container]").innerHTML = "";
     activeitems.forEach(displayItems);
-    if (id !== null) {
-        window.location.href = "#" + id;
-        console.log("jump to id");
-    }
-}
 
+    // TODO: slide to cliked item if returning without messy URL
+    // this doesn't work
+    // if (id !== null) {
+    //     window.location.href = "#" + id;
+    //     console.log("jump to id");
+    // }
+}
 
 // - - - - - - - - - - - - - display cases - - - - - - - - - - - - -
 

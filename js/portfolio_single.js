@@ -13,10 +13,11 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
     console.log("init portfolio_sigle");
 
-    document.querySelector(".back").addEventListener("click", () => {
-        window.location.href = "portfolio.html?r=" + target + "&l=" + showItems;
-    });
+    // TODO: send id for slide to cliked item
 
+    document.querySelector(".back").addEventListener("click", () => {
+        window.location.href = "portfolio.html?l=" + showItems;
+    });
 
     setTimeout(loader, 1500);
 
