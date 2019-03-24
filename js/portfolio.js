@@ -8,11 +8,9 @@ console.log("showItems er: " + showItems);
 // let id = urlParams.get("r");
 // console.log("id er: " + id);
 
-
 let click;
 let items = [];
 let keaItems = [];
-
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
@@ -26,22 +24,19 @@ function init() {
         showItems = "work";
         console.log("showItems blevet er: " + showItems);
     }
-
     if (showItems === "work") {
         setWorkActive();
     }
-
     if (showItems === "kea") {
         setKeaActive();
     }
-
 }
 
 function loader() {
     document.querySelector("#loader_bg").style.display = "none";
 }
 
-// - - - - - - - - - - - - - restdb stuff - - - - - - - - - - - - -
+// - - - - - - - - - - - - - work items - - - - - - - - - - - - -
 
 function getItems() {
     console.log("getitems");
@@ -63,6 +58,8 @@ function getItems() {
             }
         });
 }
+
+// - - - - - - - - - - - - - kea items - - - - - - - - - - - - -
 
 function getkeaItems() {
     console.log("getkeaItems");
@@ -108,6 +105,8 @@ function mouseClick(event) {
     }
 }
 
+// - - - - - - - - - - - - - button styles - - - - - - - - - - - - -
+
 function setWorkActive() {
     document.querySelector("#showitems").classList.add("active");
     document.querySelector("#showitems").classList.remove("inactive");
@@ -147,8 +146,6 @@ function sortItems(activeitems) {
 
 function displayItems(item) {
     console.log("displayItems");
-    // console.log(item._id);
-    // console.log(showItems);
     const template = document.querySelector("[data-template]").content;
     const clone = template.cloneNode(true);
     clone.querySelector("[data-target]").dataset.target = item.target;
@@ -160,6 +157,5 @@ function displayItems(item) {
     clone.querySelector("[data-target]").addEventListener("click", () => {
         window.location.href = "portfolio-case.html?p=" + item.target + "&l=" + showItems;
     });
-
     document.querySelector("[data-container]").appendChild(clone);
 }

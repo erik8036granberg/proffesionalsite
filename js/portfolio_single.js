@@ -5,7 +5,6 @@ let target = urlParams.get("p");
 console.log("target er: " + target);
 let showItems = urlParams.get("l");
 console.log("showItems er: " + showItems);
-
 let items = [];
 
 window.addEventListener("DOMContentLoaded", init);
@@ -18,9 +17,7 @@ function init() {
     document.querySelector(".back").addEventListener("click", () => {
         window.location.href = "portfolio.html?l=" + showItems;
     });
-
     setTimeout(loader, 1500);
-
     if (target === null) {
         window.location.href = "portfolio.html";
     }
@@ -36,7 +33,7 @@ function loader() {
     document.querySelector("#loader_bg").style.display = "none";
 }
 
-// - - - - - - - - - - - - - restdb stuff - - - - - - - - - - - - -
+// - - - - - - - - - - - - - work items - - - - - - - - - - - - -
 
 function getItems() {
     console.log("getItems");
@@ -58,6 +55,7 @@ function getItems() {
         });
 }
 
+// - - - - - - - - - - - - - kea items - - - - - - - - - - - - -
 
 function getkeaItems() {
     console.log("getkeaItems");
@@ -79,7 +77,6 @@ function getkeaItems() {
             displayFilter(items);
         });
 }
-
 
 function displayFilter(items) {
     console.log("displayFilter");
@@ -109,7 +106,6 @@ function displayItem(filteredItem) {
     dest
         .querySelector("[data-display]")
         .setAttribute("alt", filteredItem.customer + " - " + filteredItem.case);
-
 
     // TODO: DRY this?
 
