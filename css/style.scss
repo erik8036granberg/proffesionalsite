@@ -213,7 +213,7 @@ nav.show {
   list-style: none;
   margin: 1rem 0 0;
   padding: 0;
-  font-size: 1.3rem;
+  font-size: 1rem;
   max-width: 70%;
 }
 
@@ -227,7 +227,7 @@ nav.show {
 }
 
 .text-header h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-family: "Rajdhani", sans-serif;
   text-transform: uppercase;
   margin: 0;
@@ -243,7 +243,7 @@ nav.show {
 .profile {
   position: absolute;
   bottom: 0;
-  right: -5rem;
+  right: -3rem;
   max-width: 18rem;
 }
 
@@ -261,6 +261,27 @@ nav.show {
 .some i:hover {
   cursor: pointer;
   transform: scale(1.2);
+}
+
+main {
+  padding-bottom: 4rem;
+}
+
+.symbolgrid {
+  display: grid;
+}
+
+.symbolbox {
+  padding: 2rem 2rem 0 2rem;
+}
+
+.symbolbox h2 {
+  font-size: 1.2rem;
+}
+
+.symbolbox img {
+  width: 3rem;
+  height: auto;
 }
 
 // --------------------- portfolio ---------------------
@@ -569,6 +590,49 @@ header.subpage {
   padding-bottom: 1rem;
 }
 
+.kontakt_bg {
+  background-color: #7fb223;
+}
+
+.kontakt {
+  margin: 0;
+  padding: 5rem 2rem 5rem 3rem;
+  line-height: 1.5em;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}
+
+.kontakt .box {
+  height: auto;
+  width: auto;
+  margin: 0 0 20vh;
+}
+
+.kontakt .kontakt_logo {
+  max-width: 3rem;
+}
+
+.kontakt p {
+  margin: 0;
+}
+
+.kontakt a:link,
+.kontakt a:active,
+.kontakt a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+.kontakt a:hover {
+  color: rgb(25, 121, 1);
+}
+
+
 // --------------------- media querty 30 rem ---------------------
 
 /* 30rem (480px) */
@@ -607,6 +671,11 @@ header.subpage {
 
 /* 40rem (640px) */
 @media (min-width: 40rem) {
+
+  .symbolgrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .cv .items {
     grid-template-columns: 1fr 1fr;
   }
@@ -755,6 +824,10 @@ header.subpage {
   .profile {
     right: 8rem;
     max-width: 22rem;
+  }
+
+  .symbolgrid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
   .portfolio .cases {
