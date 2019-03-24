@@ -1,9 +1,6 @@
 "use strict";
 
-//	hent og gem URL variabeler
 let urlParams = new URLSearchParams(window.location.search);
-
-//	hent produkt-id
 let target = urlParams.get("p");
 console.log("target er: " + target);
 
@@ -17,6 +14,12 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
     console.log("init portfolio_sigle");
+
+    document.querySelector(".back").addEventListener("click", () => {
+        window.location.href = "portfolio.html?from=" + target;
+    });
+
+
     setTimeout(loader, 1500);
     getItems();
 }

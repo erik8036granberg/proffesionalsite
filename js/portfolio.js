@@ -1,5 +1,9 @@
 "use strict";
 
+let urlParams = new URLSearchParams(window.location.search);
+let id = urlParams.get("from");
+console.log("id er: " + id);
+
 let itmes = [];
 
 window.addEventListener("DOMContentLoaded", init);
@@ -40,14 +44,15 @@ function getItems() {
 function sortItems(activeitems) {
     console.log("sortItems");
     // by creation
-    activeitems.sort(function (a, z) {
-        if (a._created < z._created) {
-            return -1;
-        } else {
-            return 1;
-        }
-    });
-    // place featured in front
+    // activeitems.sort(function (a, z) {
+    //     if (a._created < z._created) {
+    //         return -1;
+    //     } else {
+    //         return 1;
+    //     }
+    // });
+
+    // by featured nr.
     activeitems.sort(function (a, z) {
         if (a.featured < z.featured) {
             return -1;
@@ -57,6 +62,10 @@ function sortItems(activeitems) {
     });
     document.querySelector("[data-container]").innerHTML = "";
     activeitems.forEach(displayItems);
+    if (id !== null) {
+        window.location.href = "#" + id;
+        console.log("jump to id");
+    }
 }
 
 // - - - - - - - - - - - - - display cases - - - - - - - - - - - - -
@@ -67,6 +76,7 @@ function displayItems(item) {
     const template = document.querySelector("[data-template]").content;
     const clone = template.cloneNode(true);
     clone.querySelector("[data-target]").dataset.target = item.target;
+    clone.querySelector("[data-target]").id = item.target;
     clone.querySelector("[data-preview]").setAttribute("src", item.preview_0);
     clone.querySelector("[data-preview]").setAttribute("alt", item.customer + " - " + item.case);
     clone.querySelector("[data-customer]").textContent = item.customer;

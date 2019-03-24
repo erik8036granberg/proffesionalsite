@@ -300,10 +300,6 @@ header.subpage {
   }
 }
 
-.faded {
-  background: #131313 !important;
-}
-
 .subpage-header h1 {
   font-size: 2.5rem;
   font-family: "Rajdhani", sans-serif;
@@ -313,7 +309,8 @@ header.subpage {
 }
 
 .portfolio {
-  padding: 2rem;
+  padding: 0 2rem 2rem 2rem;
+  position: relative;
 }
 
 .portfolio .cases {
@@ -348,6 +345,30 @@ header.subpage {
 }
 
 // --------------------- portfolio single ---------------------
+
+.faded {
+  background: #131313 !important;
+}
+
+.controles {
+  position: relative;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.back {
+  position: relative;
+  top: -2rem;
+  width: 3.75rem;
+  height: 3.75rem;
+  transition: 0.5s;
+}
+
+.back:hover {
+  width: 4rem;
+  transform: scale(1.2);
+}
 
 .portfolio .single_cases {
   display: grid;
@@ -797,11 +818,11 @@ header.subpage {
   }
 
   a:after {
-    content: " (" attr(href) ")";
+    content: " ("attr(href) ")";
   }
 
   abbr:after {
-    content: " (" attr(title) ")";
+    content: " ("attr(title) ")";
   }
 
   .ir a:after {
