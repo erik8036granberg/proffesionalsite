@@ -485,6 +485,15 @@ header.subpage {
   font-size: 0.8rem;
 }
 
+.cv .resume {
+  padding-right: 3rem;
+}
+
+.cv .resume li {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
 .cv .year_list {
   display: grid;
   grid-template-columns: 3rem 1fr;

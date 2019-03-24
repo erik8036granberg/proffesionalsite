@@ -4,10 +4,10 @@
 let urlParams = new URLSearchParams(window.location.search);
 
 //	hent produkt-id
-let id = urlParams.get("p");
-console.log("id er: " + id);
+let target = urlParams.get("p");
+console.log("target er: " + target);
 
-if (id === null) {
+if (target === null) {
     window.location.href = "portfolio.html";
 }
 
@@ -50,7 +50,7 @@ function getItems() {
 function displayFilter(items) {
     console.log("displayFilter");
     let filteredItems = items.filter(function (activeItem) {
-        return activeItem._id === id;
+        return activeItem.target === target;
     });
     console.log("filteredItems er");
     console.log(filteredItems);

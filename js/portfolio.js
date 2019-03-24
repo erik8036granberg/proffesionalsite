@@ -66,13 +66,13 @@ function displayItems(item) {
     console.log(item._id);
     const template = document.querySelector("[data-template]").content;
     const clone = template.cloneNode(true);
-    clone.querySelector("[data-id]").dataset.id = item._id;
+    clone.querySelector("[data-target]").dataset.target = item.target;
     clone.querySelector("[data-preview]").setAttribute("src", item.preview_0);
     clone.querySelector("[data-preview]").setAttribute("alt", item.customer + " - " + item.case);
     clone.querySelector("[data-customer]").textContent = item.customer;
     clone.querySelector("[data-case]").textContent = item.case;
-    clone.querySelector("[data-id]").addEventListener("click", () => {
-        window.location.href = "portfolio_single.html?p=" + item._id;
+    clone.querySelector("[data-target]").addEventListener("click", () => {
+        window.location.href = "portfolio-case.html?p=" + item.target;
     });
 
     document.querySelector("[data-container]").appendChild(clone);
