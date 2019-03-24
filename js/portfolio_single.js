@@ -3,10 +3,8 @@
 let urlParams = new URLSearchParams(window.location.search);
 let target = urlParams.get("p");
 console.log("target er: " + target);
-
-if (target === null) {
-    window.location.href = "portfolio.html";
-}
+let showItems = urlParams.get("l");
+console.log("showItems er: " + showItems);
 
 let items = [];
 
@@ -16,12 +14,21 @@ function init() {
     console.log("init portfolio_sigle");
 
     document.querySelector(".back").addEventListener("click", () => {
-        window.location.href = "portfolio.html?from=" + target;
+        window.location.href = "portfolio.html?r=" + target + "&l=" + showItems;
     });
 
 
     setTimeout(loader, 1500);
-    getItems();
+
+    if (target === null) {
+        window.location.href = "portfolio.html";
+    }
+    if (showItems === "work") {
+        getItems();
+    }
+    if (showItems === "kea") {
+        getkeaItems();
+    }
 }
 
 function loader() {
@@ -49,6 +56,29 @@ function getItems() {
             displayFilter(items);
         });
 }
+
+
+function getkeaItems() {
+    console.log("getkeaItems");
+    fetch(
+            "https://profweb-4fea.restdb.io/rest/caseskea?metafields=true&idtolink=true", {
+                method: "get",
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8",
+                    "x-apikey": "5c9396f3cac6621685acc146",
+                    "cache-control": "public"
+                }
+            }
+        )
+        //   format as jason & send to sort
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            items = data;
+            displayFilter(items);
+        });
+}
+
 
 function displayFilter(items) {
     console.log("displayFilter");

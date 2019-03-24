@@ -1,14 +1,18 @@
 "use strict";
 
 let urlParams = new URLSearchParams(window.location.search);
-let id = urlParams.get("from");
+let id = urlParams.get("r");
 console.log("id er: " + id);
+let showItems = urlParams.get("l");
+console.log("showItems er: " + showItems);
+if (showItems === null) {
+    showItems = "work";
+    console.log("showItems blevet er: " + showItems);
+}
 
 let click;
 let items = [];
 let keaItems = [];
-let showItems = true;
-
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -33,7 +37,7 @@ function getItems() {
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
                 "x-apikey": "5c9396f3cac6621685acc146",
-                "cache-control": "no-cache"
+                "cache-control": "public"
             }
         })
         //   format as jason & send to sort
@@ -41,10 +45,11 @@ function getItems() {
         .then(data => {
             console.log(data);
             items = data;
-            sortItems(items);
+            if (showItems === "work") {
+                sortItems(items);
+            }
         });
 }
-
 
 function getkeaItems() {
     console.log("getkeaItems");
@@ -54,16 +59,17 @@ function getkeaItems() {
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                     "x-apikey": "5c9396f3cac6621685acc146",
-                    "cache-control": "no-cache"
+                    "cache-control": "public"
                 }
             }
         )
         //   format as jason & send to sort
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             keaItems = data;
-            // sortItems(keaItems);
+            if (showItems === "kea") {
+                sortItems(keaItems);
+            }
         });
 }
 
@@ -75,7 +81,7 @@ function mouseClick(event) {
     if (click === "showItems") {
         console.log("showItems clicked");
         event.preventDefault();
-        showItems = true;
+        showItems = "work";
         document.querySelector("#showitems").classList.add("active");
         document.querySelector("#showitems").classList.remove("inactive");
         document.querySelector("#showkeaitems").classList.add("inactive");
@@ -85,12 +91,12 @@ function mouseClick(event) {
     if (click === "showKeaItems") {
         console.log("showKeaItems clicked");
         event.preventDefault();
-        showItems = false;
+        showItems = "kea";
         document.querySelector("#showkeaitems").classList.add("active");
         document.querySelector("#showkeaitems").classList.remove("inactive");
         document.querySelector("#showitems").classList.add("inactive");
         document.querySelector("#showitems").classList.remove("active");
-        console.log(showItems);
+        console.log(keaItems);
         sortItems(keaItems);
     }
 }
@@ -98,18 +104,6 @@ function mouseClick(event) {
 // - - - - - - - - - - - - - sort - - - - - - - - - - - - -
 
 function sortItems(activeitems) {
-    console.log("sortItems");
-    console.log(showItems);
-    // by creation
-    // activeitems.sort(function (a, z) {
-    //     if (a._created < z._created) {
-    //         return -1;
-    //     } else {
-    //         return 1;
-    //     }
-    // });
-
-    // by featured nr.
     activeitems.sort(function (a, z) {
         if (a.featured < z.featured) {
             return -1;
@@ -130,8 +124,8 @@ function sortItems(activeitems) {
 
 function displayItems(item) {
     console.log("displayItems");
-    console.log(item._id);
-    console.log(showItems);
+    // console.log(item._id);
+    // console.log(showItems);
     const template = document.querySelector("[data-template]").content;
     const clone = template.cloneNode(true);
     clone.querySelector("[data-target]").dataset.target = item.target;
@@ -141,7 +135,7 @@ function displayItems(item) {
     clone.querySelector("[data-customer]").textContent = item.customer;
     clone.querySelector("[data-case]").textContent = item.case;
     clone.querySelector("[data-target]").addEventListener("click", () => {
-        window.location.href = "portfolio-case.html?p=" + item.target;
+        window.location.href = "portfolio-case.html?p=" + item.target + "&l=" + showItems;
     });
 
     document.querySelector("[data-container]").appendChild(clone);
