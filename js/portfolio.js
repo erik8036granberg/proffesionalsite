@@ -6,8 +6,8 @@ console.log("id er: " + id);
 
 let click;
 let items = [];
-let doneItems = [];
-let showTasks = true;
+let keaItems = [];
+let showItems = true;
 
 
 window.addEventListener("DOMContentLoaded", init);
@@ -16,7 +16,7 @@ function init() {
     console.log("init");
     setTimeout(loader, 1500);
     getItems();
-    getDoneItems();
+    getkeaItems();
     document.querySelector("body").addEventListener("click", mouseClick);
 }
 
@@ -46,8 +46,8 @@ function getItems() {
 }
 
 
-function getDoneItems() {
-    console.log("getDoneItems");
+function getkeaItems() {
+    console.log("getkeaItems");
     fetch(
             "https://profweb-4fea.restdb.io/rest/caseskea?metafields=true&idtolink=true", {
                 method: "get",
@@ -62,8 +62,8 @@ function getDoneItems() {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            doneItems = data;
-            // sortItems(doneItems);
+            keaItems = data;
+            // sortItems(keaItems);
         });
 }
 
@@ -72,26 +72,26 @@ function getDoneItems() {
 function mouseClick(event) {
     click = event.target.dataset.click;
 
-    if (click === "showTasks") {
-        console.log("showTasks clicked");
+    if (click === "showItems") {
+        console.log("showItems clicked");
         event.preventDefault();
-        showTasks = true;
-        document.querySelector("#showtasks").classList.add("active");
-        document.querySelector("#showtasks").classList.remove("inactive");
-        document.querySelector("#showdone").classList.add("inactive");
-        document.querySelector("#showdone").classList.remove("active");
+        showItems = true;
+        document.querySelector("#showitems").classList.add("active");
+        document.querySelector("#showitems").classList.remove("inactive");
+        document.querySelector("#showkeaitems").classList.add("inactive");
+        document.querySelector("#showkeaitems").classList.remove("active");
         sortItems(items);
     }
-    if (click === "showDone") {
-        console.log("showDone clicked");
+    if (click === "showKeaItems") {
+        console.log("showKeaItems clicked");
         event.preventDefault();
-        showTasks = false;
-        document.querySelector("#showdone").classList.add("active");
-        document.querySelector("#showdone").classList.remove("inactive");
-        document.querySelector("#showtasks").classList.add("inactive");
-        document.querySelector("#showtasks").classList.remove("active");
-        console.log(showTasks);
-        sortItems(doneItems);
+        showItems = false;
+        document.querySelector("#showkeaitems").classList.add("active");
+        document.querySelector("#showkeaitems").classList.remove("inactive");
+        document.querySelector("#showitems").classList.add("inactive");
+        document.querySelector("#showitems").classList.remove("active");
+        console.log(showItems);
+        sortItems(keaItems);
     }
 }
 
@@ -99,7 +99,7 @@ function mouseClick(event) {
 
 function sortItems(activeitems) {
     console.log("sortItems");
-    console.log(showTasks);
+    console.log(showItems);
     // by creation
     // activeitems.sort(function (a, z) {
     //     if (a._created < z._created) {
@@ -131,7 +131,7 @@ function sortItems(activeitems) {
 function displayItems(item) {
     console.log("displayItems");
     console.log(item._id);
-    console.log(showTasks);
+    console.log(showItems);
     const template = document.querySelector("[data-template]").content;
     const clone = template.cloneNode(true);
     clone.querySelector("[data-target]").dataset.target = item.target;
